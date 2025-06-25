@@ -30,21 +30,23 @@ if (isEnabled) {
 } else {
   // Show old checkout
 }
-SDK Features
-Local caching with TTL
+```
 
-Batched API calls
+### SDK Features
+*Local caching with TTL*
 
-Supports rollout rules and targeting
+*Batched API calls*
 
-Fallback to defaults if server unreachable
+*Supports rollout rules and targeting*
 
-Option 2: Using Direct API Calls
-For environments without SDK support (e.g., shell scripts, low-level microservices), you can use the /evaluate endpoint directly.
+*Fallback to defaults if server unreachable*
 
-Request
+## Option 2: Using Direct API Calls
+For environments without SDK support (e.g., shell scripts, low-level microservices), you can use the `/evaluate` endpoint directly.
 
+### Request
 
+```
 POST /api/v1/evaluate
 Content-Type: application/json
 Authorization: Bearer <token>
@@ -58,21 +60,26 @@ Authorization: Bearer <token>
     "device": "mobile"
   }
 }
+```
 
+### Response
+
+```json
 {
   "flagKey": "new_checkout_flow",
   "enabled": true,
   "reason": "Rollout matched for user_123"
 }
+```
 
-Best Practices
-Always provide consistent user context (userId, email, etc.) for consistent flag results.
+## Best Practices
+*Always provide consistent user context (userId, email, etc.) for consistent flag results.*
 
-Cache evaluation results locally for session-based access.
+*Cache evaluation results locally for session-based access.*
 
-Retry API failures with exponential backoff if not using SDK.
+*Retry API failures with exponential backoff if not using SDK.*
 
-Avoid hardcoding flag values in code — always fetch from the system.
+*Avoid hardcoding flag values in code — always fetch from the system.*
 
-Summary
-Whether through the SDK or direct API integration, clients can dynamically control application behavior without code changes or redeployments. For details on backend setup and configuration, continue to the Deployment Guide.
+## Summary
+Whether through the SDK or direct API integration, clients can dynamically control application behavior without code changes or redeployments. For details on backend setup and configuration, continue to the *Deployment Guide*.
